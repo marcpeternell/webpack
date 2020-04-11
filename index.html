@@ -42,26 +42,47 @@
 				<!------------------- Erster Einblick ----------------------------->
 				<section>
 					<h2>Erster Einblick</h2>
-					<p class="">Webpack ist ein sogenannter <b>Module Bundler</b>, das heißt, es hilft beim Bündeln von JavaScript-Modulen
-						unter Berücksichtigung der Abhängigkeiten.</p>
+					<p class="">Module Bundler</p>
+					<p>Abhängigkeiten</p>
+
+					<aside class="notes">
+						Webpack ist ein sogenannter Module Bundler, das heißt, es hilft beim Bündeln von JavaScript-Modulen
+						und er berücksichtigt Abhängigkeiten. Webpack kennt man jedoch auch zum Transformieren
+						und Zusammenfassen anderer Dateien wie Stylesheets und Bilder.
+					
+					</aside>
 				</section>
 
 				<!------------------- Build Tools ----------------------------->
 				<section>
 					<h2>Build Tools</h2>
 					<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2152_RC04/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"/g/11clg_kyfc","geo":"","time":"today 12-m"},{"keyword":"/g/11byyl8mbg","geo":"","time":"today 12-m"},{"keyword":"grunt","geo":"","time":"today 12-m"},{"keyword":"/m/012hskn3","geo":"","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=%2Fg%2F11clg_kyfc,%2Fg%2F11byyl8mbg,grunt,%2Fm%2F012hskn3&date=today 12-m,today 12-m,today 12-m,today 12-m","guestPath":"https://trends.google.de:443/trends/embed/"}); </script> 
+					<aside class="notes">
+						die aktuellen google trends weltweit. stand heute
+					</aside>
 				</section>
 
 				<!------------------- state of js ----------------------------->
 				<section>
 					<h2>stateofjs.com</h2>
-					<img height="100%" width="100%" src="images/build_tools_2019.png" alt="SAE Logo">
+					<img height="100%" width="100%" src="images/build_tools_2019.png" alt="build tools umfrage 2019">
+					<aside class="notes">
+						stateofjs macht jedes Jahr befragen zu sämtlichen Developer Themen. Unter anderem auch welche Build Tools 2019 am meisten verwendet werden. 
+					</aside>
 				</section>
 
 				<!------------------- Modul Bundling ----------------------------->
 				<section>
 					<h2>Modul Bundling</h2>
-					<p>Abhänigkeiten werden berücksichtigt</p>	
+					<p>Abhänigkeiten werden berücksichtigt</p>
+					<aside class="notes">
+						<ul>
+							<li>Modul Bundling ist ein komplexerer Vorgang als das Reine-Datei-Zusammenfassen.</li>
+							<li>Es werden auch Abhängigkeiten berücksichtigt.</li>
+							<li>Webpack behandelt dabei nicht nur JavaScript Module</li>
+							<li>auch CSS Dateien und Bilder.</li>
+						</ul>
+					</aside>
 				</section>		
 				
 				<!------------------- Webpack Module ----------------------------->
@@ -70,14 +91,31 @@
 					<p>ES2015</p>	
 					<p>require()</p>	
 					<p>@import</p>	
-					<p>css/sass/less</p>
+					<p>sass/less</p>
 					<p>Bildverweise</p>	
+					<aside class="notes">
+						Module sind bei Webpack weit gefasst. Es gehören dazu
+						<ul>
+							<li>ES2015 import-Anweisungen,</li>
+							<li>require()- Anweisungen,</li>
+							<li>css @import</li>
+							<li>sass/less</li>
+							<li>Bildverweise im Stylesheet oder in der HTML-Datei.</li>
+						</ul>						
+						Webpack erledigt dabei nicht nur das Zusammenfassen der Dateien
+						unter Berücksichtigung der Abhängigkeiten, sondern hilft auch bei der Transformation, wenn zum
+						Beispiel, ES6-Code benutzt wird oder SASS, dann kann die Bearbeitung der Dateien ebenfalls über
+						Webpack durchgeführt werden.
+					</aside>
 				</section>	
 
 				<!------------------- Entry Point ----------------------------->
 				<section>
 					<h2>Entry Point</h2>
-					<p>Ausgehend von den entry points analysiert Webpack sämtliche Abhängigkeiten</p>	
+					<p>Ausgehend von den entry points analysiert Webpack sämtliche Abhängigkeiten</p>
+					<aside class="notes">
+					dann werden alle Pakete zu statischen Bundeln zusammgefasst, die vom Browser geladen werden können.
+					</aside>
 				</section>
 
 				<!------------------- Webpack Overview ----------------------------->
@@ -92,6 +130,14 @@
 					<p>Output</p>
 					<p>Input</p>
 					<p>Plugins</p>
+					<aside class="notes">
+						<ul>
+							<li>Entry Point: Von dort beginnt Webpack, die Abhängigkeiten zu analysieren.</li>
+							<li>Output: Output ist der Speicherort, wo die Bundels erzeugt werden.</li>
+							<li>Loader: Webpack versteht von Haus aus nur JavaScript, und Loaders transformieren andere Dateitypen in Module.</li>
+							<li>Plugins: Es gibt viele Plugins für weitergehende Aktionen wie beispielsweise Kompilierung oder Definition von Codeteilen etc..</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!------------------- Webpack installation ----------------------------->
@@ -105,6 +151,16 @@ npm install --save-dev webpack
 
 # Step 3
 ./node_modules/.bin/webpack init</code></pre>
+						<aside class="notes">
+							Was jetzt geschieht, ist,
+								<ul>
+									<li>dass zum einen ein Ordner **node_modules** mit allen Modul eingelegt wird,</li>
+									<li>und außerdem wird die Angabe zu Webpack in der Datei package.json festgehalten inklusive der benutzten Version. 
+										Webpack wird lokal für das Projekt installiert.</li>
+									<li>Es ist aber auch möglich Webpack mit dem zusatz **-g** global zu installieren. Das ist aber im allgemeinen nicht empfehlenswert, da projekte oft mit unterschiedlichen versionen von Webpack arbeitet.
+										In der **package.json** Datei wurde ein neuer Eintrag generiert</li>
+								</ul>
+						</aside>
 				</section>
 
 				<!------------------- package.json ----------------------------->
@@ -124,6 +180,9 @@ npm install --save-dev webpack
 
 # Windows
 .\node_modules\.bin\webpack --help</code></pre>
+					<aside class="notes">
+						Um zu testen ob Webpack installiert wurde und auch funktioniert folgenden Befehl in die Komandozeile eingeben.
+					</aside>
 				</section>
 
 				<!------------------- First Steps ----------------------------->
@@ -131,6 +190,13 @@ npm install --save-dev webpack
 					<h2>First Steps</h2>
 					<p>Step 1</p>
 					<pre class="bash" ><code data-line-numbers>./node_modules/.bin/webpack input.File -o output.File</code></pre>
+					<aside class="notes">
+						<ul>
+							<li>Um Datien mit Webpack bundeln zu können wird folgender Befehl für die CLI benötigt.</li>
+							<li>Wenn -o output.File nicht angegeben wird, wird der default Ordner von Webpack ersellt
+								dist/bundle.js</li>
+						</ul>
+					</aside>
 				</section>
 				
 				<!------------------- Übung 1 ----------------------------->
@@ -155,6 +221,14 @@ module.exports = {
 	}
 };
 					</code></pre>
+					<aside class="notes">
+						<ul>
+							<li>Sämtliche Webpack Optionen können über die CLI aufgerufen werden</li>
+							<li>aber es wäre echt mühsam jedesmal alle parameter schreiben zu müssen</li>
+							<li>aus diesem grund gibt es eine webpack.config.js</li>
+							<li>es muss nur mehr ./node_modules/.bin/webpack aufgerufen werden weil wir eine config datei haben</li>
+						</ul>
+					</aside>
 				</section>
 				
 				<!------------------- Übung 2 ----------------------------->
@@ -173,6 +247,12 @@ module.exports = {
 ...</code></pre>
 
 					<pre class="bash" ><code data-line-numbers>npm run build</code></pre>
+					<aside class="notes">
+						<ul>
+							<li>Um beim Aufruf von Webpack nicht jedesmal den gesamten Pfand angeben zu müssen kann Webpack auch im script Bereich der package.json Datei angegeben werden.</li>
+							<li>achtung: beim ersten muss trotzdem der pfad angegeben werden, damit npm den pfad findet</li>
+						</ul>
+					</aside>
 				</section>	
 				
 				<!------------------- Übung 3 ----------------------------->
@@ -184,6 +264,16 @@ module.exports = {
 				<section>
 					<h2>Tree Shaking</h2>
 					<p>eliminiert Code der nicht genutzt wird</p>
+					<aside class="notes">
+						<ul>
+							<li>Wenn ein neuer Computer gekauft wird und dieser viele Features besitzt, die überhaupt nicht gebraucht werden, sind dieses teuer Bezahlt.</li>
+							<li>Ähnlich gilt dies für nicht Verwendeten Code</li>
+							<li>dieser ist unnötig und unvorteilhaft für die Performance</li>
+							<li>Das sogenannte Tree Shaking eliminiert Code der nicht genutzt wird</li>
+							<li>Um Tree Shaking zu verstehen, muss man sich veranschaunlichen, dass Webpack die Abhängigkeiten analysiert und intern einen Abhängigkeitsgraph bzw. Abhängigkeitsbaum erstellt</li>
+							<li>Und wenn man diesen Baum schüttelt, dann fallen tote Äste herunter, das heißt, das, was nicht benötigt wird, wird ausgeklammert.</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!------------------- Übung 4 ----------------------------->
@@ -196,6 +286,17 @@ module.exports = {
 					<h2>Loaders 1/2</h2>
 					<p>Loader sind Erweiterungen für Webpack.</p>
 					<p>Mit Bable z.B. kann ES6 Code in ES2015 Code umgewandelt werden.</p>
+					<aside class="notes">
+						<ul>
+							<li>Loader sind erweiterungen für Webpack ung bieten die unterschiedlichsten möglichkeiten</li>
+							<ul>
+								<li>z.b. Bable -> zur umwandlung von es6 zu es2015</li>
+							</ul>
+							<li>Packaging</li>
+							<li>Dialekte</li>
+							<li>templates</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!------------------- Loaders ----------------------------->
@@ -252,6 +353,12 @@ module.exports = {
     path: path.resolve(__dirname, 'public')
   }
 ...</code></pre>
+  				<aside class="notes">
+					  <ul>
+						  <li>es können merere entry points definidert werden</li>
+						  <li>es muss mit platzhaltern gearbeitet werden</li>
+					  </ul>
+				  </aside>
 				</section>
 
 				<!------------------- Übung 6 ----------------------------->
@@ -267,6 +374,15 @@ module.exports = {
 						<li>app.js?build=1</li>
 						<li>app.js?build=2</li>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Wichtig für eine gute Performance ist die richtige Caching-Strategie</li>
+							<li>am schnellsten lädt Code, der gar nicht erst heruntergeladen werden muss</li>
+							<li>je nach Dateityp vorgegeben wird, wie lange dieser gecached werden darf</li>
+							<li>klassische mehtode mit einem parameter</li>
+							<li>webpack bietet das standartgemäß an</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!------------------- Webpack Hash ----------------------------->
@@ -288,6 +404,9 @@ module.exports = {
 				<section>
 					<h2>CSS</h2>
 					<p>Mit Webpack können auch CSS Dateien verarbeiter werden. Diese werden inline Eingebunden.</p>
+					<aside class="notes">
+						Webpack kümmert sich nicht nur um die Verarbeitung von JavaScript-Dateien, sondern kann ebenfalls CSS bearbeiten. CSS-Code können inline eingebunden werden, CSS-Dateien können gebündelt werden und natürlich auch LESS und SASS in CSS umwandeln.
+					</aside>
 				</section>	
 				
 				<!------------------- Übung 8 ----------------------------->
@@ -299,6 +418,9 @@ module.exports = {
 				<section>
 					<h2>Externe CSS</h2>
 					<p>CSS inline einbinden ist für SPA ganz nett, für größe Projekte aber nicht sinnvoll.</p>
+					<aside class="notes">
+						CSS-Dateien inline einzubinden ist sinnvoll bei SPA, ansonsten ist es besser mit externen Stylesheets zu arbeiten, weil diese auch gecached werden können.
+					</aside>
 				</section>	
 
 				<!------------------- Übung 9 ----------------------------->
@@ -310,6 +432,9 @@ module.exports = {
 				<section>
 					<h2>SASS</h2>
 					<p>Um SASS zu verwenden müssen sass-loader und node-sass installiert werden.</p>
+					<aside class="notes">
+						Um SASS zu verwenden muss zuerst der Sass-Loader & node-sass installiert werden. Weiters wird das Plugin mini-css-extract-plugin benötigt um die Datei in eine externe CSS Datei umzuwandeln.
+					</aside>
 				</section>	
 
 				<!------------------- Übung 10 ----------------------------->
@@ -320,7 +445,16 @@ module.exports = {
 				<!------------------- Images ----------------------------->
 				<section>
 					<h2>Images</h2>
-					<p>Zur Verarbeitung von Biuldern wird der File-Loader und der Url-Loader benötigt.</p>
+					<p>Zur Verarbeitung von Bildern wird der File-Loader und der Url-Loader benötigt.</p>
+					<aside class="notes">
+						<ul>
+							<li>Zur Verarbeitung von bildern wird der File-Loader und der Url-Loader benötigt.</li>
+							<li>Standardmäßig bindet Webpack Bilder inline ein.</li>
+							<li>Es kann aber in der Config Datei auch bestimmt werden ab welcher größe Bilder inline eingebunden werden sollen.</li>
+							<li>Das inline Einbinden von Bildern ist gut für die Performance, weil man dadurch HTTP-Request spart</li>
+							<li>aber es ist nicht immer sinnvoll und es ist auch gerade nicht sinnvoll bei sehr großen Bildern.</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!------------------- Übung 11 ----------------------------->
