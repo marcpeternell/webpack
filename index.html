@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Frontend Advanced - Webpack</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -12,6 +12,9 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/app.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -25,8 +28,305 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<!------------------- Logo ----------------------------->
+				<section>
+					<img height="50%" width="50%" src="images/logo.png" alt="SAE Logo">
+				</section>
+				
+				<!------------------- Titel ----------------------------->
+				<section>
+					<h1>Webpack</h1>
+					<p>w/ Marc Peternell</p>
+				</section>
+
+				<!------------------- Erster Einblick ----------------------------->
+				<section>
+					<h2>Erster Einblick</h2>
+					<p class="">Webpack ist ein sogenannter <b>Module Bundler</b>, das heißt, es hilft beim Bündeln von JavaScript-Modulen
+						unter Berücksichtigung der Abhängigkeiten.</p>
+				</section>
+
+				<!------------------- Build Tools ----------------------------->
+				<section>
+					<h2>Build Tools</h2>
+					<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2152_RC04/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"/g/11clg_kyfc","geo":"","time":"today 12-m"},{"keyword":"/g/11byyl8mbg","geo":"","time":"today 12-m"},{"keyword":"grunt","geo":"","time":"today 12-m"},{"keyword":"/m/012hskn3","geo":"","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=%2Fg%2F11clg_kyfc,%2Fg%2F11byyl8mbg,grunt,%2Fm%2F012hskn3&date=today 12-m,today 12-m,today 12-m,today 12-m","guestPath":"https://trends.google.de:443/trends/embed/"}); </script> 
+				</section>
+
+				<!------------------- state of js ----------------------------->
+				<section>
+					<h2>stateofjs.com</h2>
+					<img height="100%" width="100%" src="images/build_tools_2019.png" alt="SAE Logo">
+				</section>
+
+				<!------------------- Modul Bundling ----------------------------->
+				<section>
+					<h2>Modul Bundling</h2>
+					<p>Abhänigkeiten werden berücksichtigt</p>	
+				</section>		
+				
+				<!------------------- Webpack Module ----------------------------->
+				<section>
+					<h2>Webpack Module</h2>
+					<p>ES2015</p>	
+					<p>require()</p>	
+					<p>@import</p>	
+					<p>css/sass/less</p>
+					<p>Bildverweise</p>	
+				</section>	
+
+				<!------------------- Entry Point ----------------------------->
+				<section>
+					<h2>Entry Point</h2>
+					<p>Ausgehend von den entry points analysiert Webpack sämtliche Abhängigkeiten</p>	
+				</section>
+
+				<!------------------- Webpack Overview ----------------------------->
+				<section>
+					<img height="100%" width="100%" src="images/webpack_overview.png" alt="SAE Logo">
+				</section>
+
+				<!------------------- 4 wichtige Begriffe ----------------------------->
+				<section>
+					<h2>Wichtige Begriffe</h2>
+					<p>Entry Point</p>
+					<p>Output</p>
+					<p>Input</p>
+					<p>Plugins</p>
+				</section>
+
+				<!------------------- Webpack installation ----------------------------->
+				<section>
+					<h2>Webpack Installation</h2>
+					<pre><code class="bash" data-line-numbers># Step 1
+npm init -y
+
+# Setp 2
+npm install --save-dev webpack
+
+# Step 3
+./node_modules/.bin/webpack init</code></pre>
+				</section>
+
+				<!------------------- package.json ----------------------------->
+				<section>
+					<h2>package.json</h2>
+					<pre class="bash"><code data-line-numbers>"devDependencies" : 
+{
+  "webpack":"^4.42.1"
+}</code></pre>
+				</section>
+
+				<!------------------- Webpack überprüfen ----------------------------->
+				<section>
+					<h2>Webpack Help</h2>
+					<pre><code class="bash" data-line-numbers># MacOS
+./node_modules/.bin/webpack --help
+
+# Windows
+.\node_modules\.bin\webpack --help</code></pre>
+				</section>
+
+				<!------------------- First Steps ----------------------------->
+				<section>
+					<h2>First Steps</h2>
+					<p>Step 1</p>
+					<pre class="bash" ><code data-line-numbers>./node_modules/.bin/webpack input.File -o output.File</code></pre>
+				</section>
+				
+				<!------------------- Übung 1 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue01.zip" download="">Übung 1</a></h2>
+				</section>			
+
+				<!------------------- Webpack.config.js ----------------------------->
+				<section>
+					<h2>webpack.config.js</h2>
+					<pre class="js" ><code data-line-numbers>// Path ist ein Modul von node.js und hilft bei der arbeit mit Dateien und Ordnern
+const path = require('path');
+
+module.exports = {
+
+	// Der Pfad zur Ausgangsdatei an der Webpack beginnt die Abhängigkeiten zu analysieren
+	entry: '',
+	// Welche Datei soll geschrieben werden
+	output: {
+		filename: ,
+		path: path.resolve(__dirname, 'output.Folder')
+	}
+};
+					</code></pre>
+				</section>
+				
+				<!------------------- Übung 2 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue02.zip" download="">Übung 2</a></h2>
+				</section>
+				
+				<!------------------- CLI ----------------------------->
+				<section>
+					<h2>CLI</h2>
+					<pre class="js" ><code data-line-numbers>...
+"scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"build": "webpack"
+},
+...</code></pre>
+
+					<pre class="bash" ><code data-line-numbers>npm run build</code></pre>
+				</section>	
+				
+				<!------------------- Übung 3 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue03.zip" download="">Übung 3</a></h2>
+				</section>
+
+				<!------------------- Tree Shaking ----------------------------->
+				<section>
+					<h2>Tree Shaking</h2>
+					<p>eliminiert Code der nicht genutzt wird</p>
+				</section>
+
+				<!------------------- Übung 4 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue04.zip" download="">Übung 4</a></h2>
+				</section>
+				
+				<!------------------- Loaders ----------------------------->
+				<section>
+					<h2>Loaders 1/2</h2>
+					<p>Loader sind Erweiterungen für Webpack.</p>
+					<p>Mit Bable z.B. kann ES6 Code in ES2015 Code umgewandelt werden.</p>
+				</section>
+
+				<!------------------- Loaders ----------------------------->
+				<section>
+					<h2>Loaders 2/2</h2>
+					<pre class="js" ><code data-line-numbers>const path = require('path');
+module.exports = {
+  entry: './src/app.js',
+  output: {
+    filename: 'app.js',
+    path: path.resolve(__dirname, 'public')
+  },
+
+  //neu
+  module: {
+    //hier definieren wir unsere Regeln
+    rules: [
+    {
+      // bei Tests geben wir an welche Dateitypen bearbeitet werden sollen. In
+      diesem Beispiel alle .js Dateien (diese werden mit einer regex ausgewählt)
+      test: /\.fileName$/,
+      // welche Ordner sollen nicht berücksichtigt werden.
+      exclude: /(dirName)/,
+      // bei use werden die Loader angegeben
+      use: {
+      loader: '',
+      //zusätzlich können gewissen Optionen definiert werden.
+      options: {
+        presets: ['']
+      }
+    }
+  }
+ ]
+ ////////////
+}
+};</code></pre>
+				</section>
+
+				<!------------------- Übung 5 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue05.zip" download="">Übung 5</a></h2>
+				</section>
+
+				<!------------------- Entry Points ----------------------------->
+				<section>
+					<h2>Entry Points</h2>
+					<pre class="js" ><code data-line-numbers>...
+  entry: {
+    main: '',
+    second: ''
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'public')
+  }
+...</code></pre>
+				</section>
+
+				<!------------------- Übung 6 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue06.zip" download="">Übung 6</a></h2>
+				</section>
+
+				<!------------------- Cache ----------------------------->
+				<section>
+					<h2>Cache</h2>
+					<p>Eine gute Caching Strategie hilft für eine gute Performance</p>
+					<ul>
+						<li>app.js?build=1</li>
+						<li>app.js?build=2</li>
+					</ul>
+				</section>
+
+				<!------------------- Webpack Hash ----------------------------->
+				<section>
+					<h2>Hash & Chunkhash</h2>
+					<ul>
+						<li>[hash] -> der Hash ist für alle Dateien des Builds gleich.</li>
+						<li>[chunkhash] -> der Hash ist für jede Datei individuell</li>
+					</ul>
+					<pre class="js" ><code>filename: '[name].[chunkhash].js'</code></pre>
+				</section>
+
+				<!------------------- Übung 7 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue07.zip" download="">Übung 7</a></h2>
+				</section>
+
+				<!------------------- CSS ----------------------------->
+				<section>
+					<h2>CSS</h2>
+					<p>Mit Webpack können auch CSS Dateien verarbeiter werden. Diese werden inline Eingebunden.</p>
+				</section>	
+				
+				<!------------------- Übung 8 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue08.zip" download="">Übung 8</a></h2>
+				</section>
+
+				<!------------------- Externe CSS ----------------------------->
+				<section>
+					<h2>Externe CSS</h2>
+					<p>CSS inline einbinden ist für SPA ganz nett, für größe Projekte aber nicht sinnvoll.</p>
+				</section>	
+
+				<!------------------- Übung 9 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue09.zip" download="">Übung 9</a></h2>
+				</section>
+
+				<!------------------- SASS ----------------------------->
+				<section>
+					<h2>SASS</h2>
+					<p>Um SASS zu verwenden müssen sass-loader und node-sass installiert werden.</p>
+				</section>	
+
+				<!------------------- Übung 10 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue10.zip" download="">Übung 10</a></h2>
+				</section>
+
+				<!------------------- Images ----------------------------->
+				<section>
+					<h2>Images</h2>
+					<p>Zur Verarbeitung von Biuldern wird der File-Loader und der Url-Loader benötigt.</p>
+				</section>
+
+				<!------------------- Übung 11 ----------------------------->
+				<section>
+					<h2><a href="./uebungen/ue11.zip" download="">Übung 11</a></h2>
+				</section>
 			</div>
 		</div>
 

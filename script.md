@@ -307,9 +307,6 @@ filename: '[name].[chunkhash].js'
 
 Webpack bietet die Möglichkeit Dateien mit einem Hashwert zu versehen um bei der Handhabung mit dem Cache zu helfen. Durch das beifügen eines Platzhalters [hash] oder [chunkhash] wird der Hashwert automatisch generiert.
 
-## Plugins
-
-
 
 ## CSS
 
