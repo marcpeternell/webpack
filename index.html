@@ -49,7 +49,6 @@
 						Webpack ist ein sogenannter Module Bundler, das heißt, es hilft beim Bündeln von JavaScript-Modulen
 						und er berücksichtigt Abhängigkeiten. Webpack kennt man jedoch auch zum Transformieren
 						und Zusammenfassen anderer Dateien wie Stylesheets und Bilder.
-					
 					</aside>
 				</section>
 
@@ -121,6 +120,12 @@
 				<!------------------- Webpack Overview ----------------------------->
 				<section>
 					<img height="100%" width="100%" src="images/webpack_overview.png" alt="SAE Logo">
+					<aside class="notes">
+						<ul>
+							<li>.hbs -> handlebars.js ist eine js templating language, man arbeitet sehr viel mit platzhaltern die später mit content befüllt werden</li>
+							<li>.cjs -> CommonJS </li>
+						</ul>
+					</aside>
 				</section>
 
 				<!------------------- 4 wichtige Begriffe ----------------------------->
@@ -283,7 +288,7 @@ module.exports = {
 				
 				<!------------------- Loaders ----------------------------->
 				<section>
-					<h2>Loaders 1/2</h2>
+					<h2>Loaders</h2>
 					<p>Loader sind Erweiterungen für Webpack.</p>
 					<p>Mit Bable z.B. kann ES6 Code in ES2015 Code umgewandelt werden.</p>
 					<aside class="notes">
@@ -301,7 +306,7 @@ module.exports = {
 
 				<!------------------- Loaders ----------------------------->
 				<section>
-					<h2>Loaders 2/2</h2>
+					<h2>Loaders</h2>
 					<pre class="js" ><code data-line-numbers>const path = require('path');
 module.exports = {
   entry: './src/app.js',
@@ -330,7 +335,6 @@ module.exports = {
     }
   }
  ]
- ////////////
 }
 };</code></pre>
 				</section>
@@ -398,6 +402,36 @@ module.exports = {
 				<!------------------- Übung 7 ----------------------------->
 				<section>
 					<h2><a href="./uebungen/ue07.zip" download="">Übung 7</a></h2>
+				</section>
+
+				<!------------------- Manifest.json ----------------------------->
+				<section>
+					<h2>manifest.json</h2>
+					<pre class="js" ><code>// unter den Plugins in der webpack.config.js
+...
+
+function(){
+	//sobald Webpack fertig mit dem Compilieren ist wird es ausgeführt. 
+	this.plugin('done', stats => {
+		//stats beeinhaltet sämtliche Informationen die beim Compilieren erstellt werden. 
+		require('fs').writeFileSync(
+			path.join(__dirname, 'src/manifest,json'),
+			// die stats zu json umwandeln und es in eine Datei namens manifest.json speichern
+			JSON.stringify(stats.toJson())
+		)
+	})
+}
+					</code></pre>
+					<aside class="notes">
+						<ul>
+							<li>
+								Wenn mit einem Hash Wert gearbeitet wird, unterscheidet sich der Name des Output-Files jedes mal wenn Webpack ausgeführt wird. Es muss ein Weg gefunden werden um alles dynamisch zu gestallten. Der einfachste Weg ist die Erstellung eines eigenen kleinen Plugins.
+							</li>
+							<li>Die erstelte Datei wird sämtliche Informationen beeinhalten, bei größeren Projekten mit vielen Dependencies kann dieses File mehrere Hundert Zeilen lang sein. Aus diesem Grund ist es nicht zu empfehlen alle Dateien zu schreiben. assetsByChunkName beinhaltet die caching relevanten Daten.</li>
+							<li>Jedesmal wenn Webpack Compiliert, wird auch die manifest.json neu generiert mit den benötigten Dateinamen.</li>
+							<li>Abhänig von dem Projekt kann kann die Datei ausgelesen werden und im index File eingebunden werden.</li>
+						</ul>
+					</aside>
 				</section>
 
 				<!------------------- CSS ----------------------------->
